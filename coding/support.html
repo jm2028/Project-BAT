@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<title>support</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+		<link rel="stylesheet" href="css/support.css">
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<script src="js/jquery.js"></script>
+		<script src="js/modernizr.custom.js"></script>
+		<script type="text/javascript">
+			/*토글 제이쿼리*/
+			$(function(){
+				var navShow=$('.navbutton');
+				var navHide=$('.closebutton');
+				var navBox=$('.lnb');
+				
+				navShow.click(function(){
+					navBox.slideDown();
+					$(this).hide();
+					$('.closebutton').show();
+				});
+				navHide.click(function(){
+					navBox.slideUp();
+					$(this).hide();
+					$('.navbutton').show();
+				});
+			});
+			$(function(){/*speaker*/
+				var navInShow=$('.slidedownbutton1');
+				var navInHide=$('.slideupbutton1');
+				var navInBox=$('.navspeaker');
+
+				navInShow.click(function(){
+					navInBox.slideDown();
+					$(this).hide();
+					$(this).prev().show();
+				});
+				navInHide.click(function(){
+					navInBox.slideUp();
+					$(this).hide();
+					$(this).next().show();
+				});
+
+				var navInShowli=$();
+			});
+			$(function(){/*headphone*/
+				var navInShow=$('.slidedownbutton2');
+				var navInHide=$('.slideupbutton2');
+				var navInBox=$('.navheadphones');
+
+				navInShow.click(function(){
+					navInBox.slideDown();
+					$(this).hide();
+					$(this).prev().show();
+				});
+				navInHide.click(function(){
+					navInBox.slideUp();
+					$(this).hide();
+					$(this).next().show();
+				});
+			});
+			$(function(){/*inear*/
+				var navInShow=$('.slidedownbutton3');
+				var navInHide=$('.slideupbutton3');
+				var navInBox=$('.navinear');
+
+				navInShow.click(function(){
+					navInBox.slideDown();
+					$(this).hide();
+					$(this).prev().show();
+				});
+				navInHide.click(function(){
+					navInBox.slideUp();
+					$(this).hide();
+					$(this).next().show();
+				});
+			});
+			$(function(){ //mobile footer drop
+				$('.dropbtn').click(function(){
+					$('.dropmenu').slideUp();
+					$('.updownbutton').css('transform','none');
+					if(!$(this).next().is(":visible"))
+					{
+						$(this).next().slideDown();
+						$(this).find('.updownbutton:eq(0)').css('transform','rotate(180deg)');
+					}
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<header><!--header-->
+			<div class="move">
+				<span id="top_move"><img src="../images/main/slideup.png"></span>
+			</div>
+			<script>
+				$(function(){
+					$("#top_move").click(function(){
+						$('body, html').animate({scrollTop:0}, 450);
+					});
+				   	$(window).scroll(function(){
+						if($(this).scrollTop() > 250){
+							$('.move').fadeIn();
+						} else {
+							$('.move').fadeOut();
+						}
+					});
+				});
+			</script>
+			<div id="header-top">
+				<div id="header-top-inner">
+					<h1><a href="main.html">BAT</a></h1>
+					<a href="main.html" class="batlogo"><img src="../logo/NEWbat.jpg" alt="BAT로고"></a>
+					<ul class="gnb">
+						<li class="search-box"><!--<a href="#"><img src="../images/search.png"></a>-->
+							<form>
+								<input type="text" class="search-txt" name="" placeholder="검색어를 입력해주세요" required>
+								<input type="submit" class="search-s" value="검색">
+								<a class="search-btn" href="#">
+									<img class="searchimg" src="../images/search.png">
+									<img class="closeimg"src="../images/main/close.png">
+								</a>
+								<script> //검색버튼 포커스 블러
+									$(".search-txt").focus(function(){
+										$(this).val('');
+									}).blur(function(){
+										$(this).val('검색어를 입력해주세요');
+									});
+								</script>
+							</form>
+						</li>
+						<li><a href="#"><img src="../images/cart.png"></a></li>
+						<li><a href="#"><img src="../images/mypage1.png"></a></li>
+					</ul>
+					<form class="mobile-search"><!--mobile search-->
+						<input type="text" class="search-mobile" name="" placeholder="검색어를 입력해주세요" required>
+						<input type="submit" class="search-mobile-btn" name="" value="검색">
+					</form>
+					<script>
+						$(function(){ //모바일 검색창 스크립트
+							var width = window.innerWidth;
+							if(width < 1024){ 
+								$(".searchimg").click(function(){
+									$(this).hide();
+									$(".closeimg").show();
+									$(".search-mobile").slideDown(300);
+									$(".search-mobile-btn").slideDown(300);
+								});
+								$(".closeimg").click(function(){
+									$(this).hide();
+									$(".searchimg").show();
+									$(".search-mobile").slideUp(300);
+									$(".search-mobile-btn").slideUp(300).css('background-color','#efefef').css('color','#000');
+								});
+								$(".search-mobile-btn").click(function(){
+									$(this).css('background-color','#000').css('color','#fff');
+								});
+							}
+						});
+					</script>
+				</div>
+			</div>
+			<div id="header-bottom">
+				<div id="header-bottom-inner">
+					<img src="../images/main/hamburger.png" alt="nav-bar" class="navbutton">
+					<img src="../images/main/close.png" alt="closebut" class="closebutton">
+					<ul class="lnb">
+						<li>
+							<img src="../images/main/slideup.png" alt="slideup" class="sbbutton slideupbutton1">
+							<img src="../images/main/slidedown.png" alt="slidedown" class="sbbutton slidedownbutton1">
+							<a href="#">SPEAKER</a>
+							<ul class="navspeaker navsubmenu">
+								<li class="homespeaker">
+									<dl class="lnbdl">
+										<dt class="navimg"><a href="#"><img src="../images/main/balance.png"></a></dt>
+										<dd class="navtit"><a href="#">HOME SPEAKER</a></dd>
+									</dl>
+								</li>
+								<li class="soundbar">
+									<dl class="lnbdl">
+										<dt class="navimg"><a href="#"><img src="../images/main/baostage.png"></a></dt>
+										<dd class="navtit"><a href="#">SOUND BAR</a></dd>
+									</dl>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<img src="../images/main/slideup.png" alt="slideup" class="sbbutton slideupbutton2">
+							<img src="../images/main/slidedown.png" alt="slidedown" class="sbbutton slidedownbutton2">
+							<a href="sub.html">HEADPHONES</a>
+							<ul class="navheadphones navsubmenu">
+								<li class="overear">
+									<dl class="lnbdl">
+										<dt class="navimg"><a href="sub.html"><img src="../images/main/h4.png"></a></dt>
+										<dd class="navtit"><a href="sub.html">OVER EAR</a></dd>
+									</dl>
+								</li>
+								<li class="onear">
+									<dl class="lnbdl">
+										<dt class="navimg"><a href="sub.html"><img src="../images/main/h8.png"></a></dt>
+										<dd class="navtit"><a href="sub.html">ON EAR</a></dd>
+									</dl>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<img src="../images/main/slideup.png" alt="slideup" class="sbbutton slideupbutton3">
+							<img src="../images/main/slidedown.png" alt="slidedown" class="sbbutton slidedownbutton3">
+							<a href="#">INEAR</a>
+							<ul class="navinear navsubmenu">
+								<li class="canal">
+									<dl class="lnbdl">
+										<dt class="navimg"><a href="#"><img src="../images/main/e6.png" alt=""></a></dt>
+										<dd class="navtit"><a href="#">CANAL</a></dd>
+									</dl>
+								</li>
+								<li class="earbud">
+									<dl class="lnbdl">
+										<dt class="navimg"><a href="#"><img src="../images/main/e7.png"alt=""></a></dt>
+										<dd class="navtit"><a href="#">EARBUD</a></dd>
+									</dl>
+								</li>
+							</ul>
+						</li>
+						<li><a href="support.html">SUPPORT</a></li>
+					</ul><!--lnb END-->
+				</div><!--header-bottom-inner END-->
+			</div><!--header-bottom END-->
+		</header><!--header END-->
+		<section id="banner">
+			<div class="banner-inner">
+				<h2>무엇을 도와드릴까요?</h2>
+				<form>
+					<input type="text" class="sup-search" name="sup-search" placeholder="문의 사항을 검색해 보세요." required>
+					<input type="submit" class="sup-btn" name="sup-btn" value="검색">
+				</form>
+				<img src="../images/support/supbannerimg.jpg" alt="">
+			</div><!--banner-inner END-->
+		</section><!--banner END-->
+		<section id="sup">
+			<div class="itemsup">
+				<h2>제품지원</h2>
+				<ul>
+					<li>
+						<div class="content">
+							<a href="#">
+								<img src="../images/support/batlab-19.png" alt="">
+								<h3>Speakers</h3>
+							</a>
+						</div>
+					</li>
+					<li>
+						<div class="content">
+							<a href="#">
+								<img src="../images/support/h9.png" alt="">
+								<h3>Headphones</h3>
+							</a>
+						</div>
+					</li>
+					<li>
+						<div class="content">
+							<a href="#">
+								<img src="../images/support/e8.png" alt="">
+								<h3>Earphones</h3>
+							</a>
+						</div>
+					</li>
+					<li>
+						<div class="content">
+							<a href="#">
+								<img src="../images/support/acc.png" alt="">
+								<h3>Accessories</h3>
+							</a>
+						</div>
+					</li>
+				</ul>
+			</div><!--itemsup END-->
+			<div class="usersup">
+				<h2>고객지원</h2>
+				<ul>
+					<li>
+						<div class="content">
+							<a href="#">
+								<img src="../images/support/chat.png" alt="">
+								<h3>채팅문의</h3>
+								<p>채팅을 시작하여 제품, 보증 요청 또는 주문에 대한 도움말을 받으십시오.</p>
+							</a>
+						</div>
+					</li>
+					<li>
+						<div class="content">
+							<a href="#">
+								<img src="../images/support/mail.png" alt="">
+								<h3>메일문의</h3>
+								<p>문의 양식을 통해 질문을 보내 주시면 가능한 한 빨리 답변해 드리겠습니다.</p>
+							</a>
+						</div>
+					</li>
+					<li>
+						<div class="content">
+							<a href="#">
+								<img src="../images/support/call.png" alt="">
+								<h3>전화문의</h3>
+								<p>최적의 정보를  신속히 안내해 드리겠습니다. 간편하고 빠르게 전화로 문의해보세요</p>
+							</a>
+						</div>
+					</li>
+				</ul>
+			</div><!--usersup END-->
+			<div class="etcsup">
+				<h2>기타지원</h2>
+				<ul>
+					<li>
+						<div class="content">
+							<a href="#">
+								<img class="register" src="../images/support/register.jpg" alt="register">
+								<h3>제품등록</h3>
+							</a>
+						</div>
+					</li>
+					<li>
+						<div class="content">
+							<a href="#">
+								<img class="repair" src="../images/support/repair.png" alt="repair">
+								<h3>교체 및 수리</h3>
+							</a>
+						</div>
+					</li>
+					<li>
+						<div class="content">
+							<a href="#">
+								<img class="service" src="../images/support/service.png" alt="service">
+								<h3>서비스 및 보증</h3>
+							</a>
+						</div>
+					</li>
+					<li>
+						<div class="content">
+							<a href="#">
+								<img class="return" src="../images/support/return.png" alt="return">
+								<h3>온라인 주문 반품</h3>
+							</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</section><!--sup END-->
+		<section id="subscribe">
+			<form>
+				<fieldset class="input_holder">
+					<label for="subscribebox"><p><span class="sub_bat">BAT</span><span class="sub_mem">의 멤버가 되어 함께 해주세요</span></p>
+					<p class="sub_text">맞춤형 제품 뉴스, 업데이트 및 특별 초대를 받을 수 있습니다!</p></label>
+					<input type="text" id="subscribebox" placeholder="이메일 주소 입력" required>
+					<input type="submit" value="등록">
+				</fieldset>
+			</form>
+		</section><!--subscribe END-->
+		<footer>
+			<div id="footer_inner">
+				<div class="footlogo">
+					<img src="../images/main/batlogo.png" alt="BAT 로고">
+				</div>
+				<div class="footnav dropdown">
+					<h3 class="dropbtn">제품<img class="updownbutton" src="../images/main/downbutton.png"></h3>
+					<ul class="dropmenu">
+						<li><a href="#">스피커</a></li>
+						<li><a href="#">헤드폰</a></li>
+						<li><a href="#">이어폰</a></li>
+					</ul>
+				</div>
+				<div class="footnav dropdown">
+					<h3 class="dropbtn">고객지원<img class="updownbutton" src="../images/main/downbutton.png"></h3>
+					<ul class="dropmenu">
+						<li><a href="support.html">제품 도움말</a></li>
+						<li><a href="support.html">매장찾기</a></li>
+						<li><a href="support.html">문의하기</a></li>
+					</ul>
+				</div>
+				<div class="footnav dropdown">
+					<h3 class="dropbtn">회사<img class="updownbutton" src="../images/main/downbutton.png"></h3>
+					<ul class="dropmenu">
+						<li><a href="#">소개</a></li>
+						<li><a href="#">채용</a></li>
+						<li><a href="#">이용약관</a></li>
+						<li><a href="#">사이트맵</a></li>
+					</ul>
+				</div>
+				<div class="footnav">
+					<div class="follow">
+						<h3>팔로우하기</h3>
+						<ul>
+							<li class="snslogo">
+								<a href="#"><img class="non logo1" src="../images/footer/sns1.png"><img class="hover logo1" src="../images/footer/sns1ov.png"></a>
+							</li>
+							<li class="snslogo">
+								<a href="#"><img class="non logo2" src="../images/footer/sns2.png"><img class="hover logo2" src="../images/footer/sns2ov.png"></a>
+							</li>
+							<li class="snslogo">
+								<a href="#"><img class="non logo3" src="../images/footer/sns3.png"><img class="hover logo3" src="../images/footer/sns3ov.png"></a>
+							</li>
+							<li class="snslogo">
+								<a href="#"><img class="non logo4" src="../images/footer/sns4.png"><img class="hover logo4" src="../images/footer/sns4ov.png"></a>
+							</li>
+						</ul>
+					</div><!--follow END-->
+				</div>
+				<div class="footnav lastnav">
+					<div class="location">
+						<h3>위치</h3>
+						<p>대한민국 | <a href="#">변경</a></p>
+					</div><!--location END-->
+				</div><!--footnav lastnav END-->
+			</div><!--footer_inner END-->
+		</footer>
+	</body>
+</html>

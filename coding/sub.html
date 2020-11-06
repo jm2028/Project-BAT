@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<title>subpage</title>
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+		<link rel="stylesheet" href="css/sub.css">
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<script src="js/jquery.js"></script>
+		<script src="js/modernizr.custom.js"></script>
+		<script type="text/javascript">
+			/*토글 제이쿼리*/
+			$(function(){
+				var navShow=$('.navbutton');
+				var navHide=$('.closebutton');
+				var navBox=$('.lnb');
+				
+				navShow.click(function(){
+					navBox.slideDown();
+					$(this).hide();
+					$('.closebutton').show();
+				});
+				navHide.click(function(){
+					navBox.slideUp();
+					$(this).hide();
+					$('.navbutton').show();
+				});
+			});
+			$(function(){/*speaker*/
+				var navInShow=$('.slidedownbutton1');
+				var navInHide=$('.slideupbutton1');
+				var navInBox=$('.navspeaker');
+
+				navInShow.click(function(){
+					navInBox.slideDown();
+					$(this).hide();
+					$(this).prev().show();
+				});
+				navInHide.click(function(){
+					navInBox.slideUp();
+					$(this).hide();
+					$(this).next().show();
+				});
+
+				var navInShowli=$();
+			});
+			$(function(){/*headphone*/
+				var navInShow=$('.slidedownbutton2');
+				var navInHide=$('.slideupbutton2');
+				var navInBox=$('.navheadphones');
+
+				navInShow.click(function(){
+					navInBox.slideDown();
+					$(this).hide();
+					$(this).prev().show();
+				});
+				navInHide.click(function(){
+					navInBox.slideUp();
+					$(this).hide();
+					$(this).next().show();
+				});
+			});
+			$(function(){/*inear*/
+				var navInShow=$('.slidedownbutton3');
+				var navInHide=$('.slideupbutton3');
+				var navInBox=$('.navinear');
+
+				navInShow.click(function(){
+					navInBox.slideDown();
+					$(this).hide();
+					$(this).prev().show();
+				});
+				navInHide.click(function(){
+					navInBox.slideUp();
+					$(this).hide();
+					$(this).next().show();
+				});
+			});
+			$(function(){ //mobile footer drop
+				$('.dropbtn').click(function(){
+					$('.dropmenu').slideUp();
+					$('.updownbutton').css('transform','none');
+					if(!$(this).next().is(":visible"))
+					{
+						$(this).next().slideDown();
+						$(this).find('.updownbutton:eq(0)').css('transform','rotate(180deg)');
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<header><!--header-->
+			<div class="move">
+				<span id="top_move"><img src="../images/main/slideup.png"></span>
+			</div>
+			<script>
+				$(function(){
+					$("#top_move").click(function(){
+						$('body, html').animate({scrollTop:0}, 450);
+					});
+				   	$(window).scroll(function(){
+						if($(this).scrollTop() > 250){
+							$('.move').fadeIn();
+						} else {
+							$('.move').fadeOut();
+						}
+					});
+				});
+			</script>
+			<div id="header-top">
+				<div id="header-top-inner">
+					<h1><a href="main.html">BAT</a></h1>
+					<a href="main.html" class="batlogo"><img src="../logo/NEWbat.jpg" alt="BAT로고"></a>
+					<ul class="gnb">
+						<li class="search-box"><!--<a href="#"><img src="../images/search.png"></a>-->
+							<form>
+								<input type="text" class="search-txt" name="" placeholder="검색어를 입력해주세요" required>
+								<input type="submit" class="search-s" value="검색">
+								<a class="search-btn" href="#">
+									<img class="searchimg" src="../images/search.png">
+									<img class="closeimg"src="../images/main/close.png">
+								</a>
+								<script> //검색버튼 포커스 블러
+									$(".search-txt").focus(function(){
+										$(this).val('');
+									}).blur(function(){
+										$(this).val('검색어를 입력해주세요');
+									});
+								</script>
+							</form>
+						</li>
+						<li><a href="#"><img src="../images/cart.png"></a></li>
+						<li><a href="#"><img src="../images/mypage1.png"></a></li>
+					</ul>
+					<form class="mobile-search"><!--mobile search-->
+						<input type="text" class="search-mobile" name="" placeholder="검색어를 입력해주세요" required>
+						<input type="submit" class="search-mobile-btn" name="" value="검색">
+					</form>
+					<script>
+						$(function(){ //모바일 검색창 스크립트
+							var width = window.innerWidth;
+							if(width < 1024){ 
+								$(".searchimg").click(function(){
+									$(this).hide();
+									$(".closeimg").show();
+									$(".search-mobile").slideDown(300);
+									$(".search-mobile-btn").slideDown(300);
+								});
+								$(".closeimg").click(function(){
+									$(this).hide();
+									$(".searchimg").show();
+									$(".search-mobile").slideUp(300);
+									$(".search-mobile-btn").slideUp(300).css('background-color','#efefef').css('color','#000');
+								});
+								$(".search-mobile-btn").click(function(){
+									$(this).css('background-color','#000').css('color','#fff');
+								});
+							}
+						});
+					</script>
+				</div>
+			</div>
+			<div id="header-bottom">
+				<div id="header-bottom-inner">
+					<img src="../images/main/hamburger.png" alt="nav-bar" class="navbutton">
+					<img src="../images/main/close.png" alt="closebut" class="closebutton">
+					<ul class="lnb">
+						<li>
+							<img src="../images/main/slideup.png" alt="slideup" class="sbbutton slideupbutton1">
+							<img src="../images/main/slidedown.png" alt="slidedown" class="sbbutton slidedownbutton1">
+							<a href="#">SPEAKER</a>
+							<ul class="navspeaker navsubmenu">
+								<li class="homespeaker">
+									<dl class="lnbdl">
+										<dt class="navimg"><a href="#"><img src="../images/main/balance.png"></a></dt>
+										<dd class="navtit"><a href="#">HOME SPEAKER</a></dd>
+									</dl>
+								</li>
+								<li class="soundbar">
+									<dl class="lnbdl">
+										<dt class="navimg"><a href="#"><img src="../images/main/baostage.png"></a></dt>
+										<dd class="navtit"><a href="#">SOUND BAR</a></dd>
+									</dl>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<img src="../images/main/slideup.png" alt="slideup" class="sbbutton slideupbutton2">
+							<img src="../images/main/slidedown.png" alt="slidedown" class="sbbutton slidedownbutton2">
+							<a href="sub.html">HEADPHONE</a>
+							<ul class="navheadphones navsubmenu">
+								<li class="overear">
+									<dl class="lnbdl">
+										<dt class="navimg"><a href="sub.html"><img src="../images/main/h4.png"></a></dt>
+										<dd class="navtit"><a href="sub.html">OVER EAR</a></dd>
+									</dl>
+								</li>
+								<li class="onear">
+									<dl class="lnbdl">
+										<dt class="navimg"><a href="sub.html"><img src="../images/main/h8.png"></a></dt>
+										<dd class="navtit"><a href="sub.html">ON EAR</a></dd>
+									</dl>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<img src="../images/main/slideup.png" alt="slideup" class="sbbutton slideupbutton3">
+							<img src="../images/main/slidedown.png" alt="slidedown" class="sbbutton slidedownbutton3">
+							<a href="#">INEAR</a>
+							<ul class="navinear navsubmenu">
+								<li class="canal">
+									<dl class="lnbdl">
+										<dt class="navimg"><a href="#"><img src="../images/main/e6.png" alt=""></a></dt>
+										<dd class="navtit"><a href="#">CANAL</a></dd>
+									</dl>
+								</li>
+								<li class="earbud">
+									<dl class="lnbdl">
+										<dt class="navimg"><a href="#"><img src="../images/main/e7.png"alt=""></a></dt>
+										<dd class="navtit"><a href="#">EARBUD</a></dd>
+									</dl>
+								</li>
+							</ul>
+						</li>
+						<li><a href="support.html">SUPPORT</a></li>
+					</ul><!--lnb END-->
+				</div><!--header-bottom-inner END-->
+			</div><!--header-bottom END-->
+		</header><!--header END-->
+		<section id="banner">
+			<div class="banner-inner">
+				<img src="../images/sub/banner.png" alt="">
+				<h2>HEADPHONES</h2>
+			</div>
+		</section><!--banner END-->
+		<section id="sub-item">
+			<form>
+				<div class="item-left">
+					<h3 class="detail-slide">상세분류	
+						<img class="slide-down" src="../images/main/slidedown.png" alt="">
+						<img class="slide-up" src="../images/main/slideup.png"alt="">
+					</h3>
+					<script>
+						$(function(){
+							$('.slide-down').click(function(){
+								$(this).hide().next().show();
+								$('.detail-slide-ul').slideDown();
+							});
+							$('.slide-up').click(function(){
+								$(this).hide().prev().show();
+								$('.detail-slide-ul').slideUp();
+							});
+						});
+					</script>
+					<ul class="detail-slide-ul">
+						<li>
+							<h4>FIT</h4>
+							<ul>
+								<li class="ckboxli">
+									<input type="checkbox" name="On-ear" value="On-ear" id="On-ear" checked>
+									<label for="On-ear">
+										<span class="ckbox">
+											<img class="unckbox-icon" src="../images/sub/uncheckbox.png">
+											<img class="ckbox-icon" src="../images/sub/checkbox.png">
+										</span>
+										<span class="ckbox-text">On-ear</span>
+									</label>
+								</li>
+								<li class="ckboxli">	
+									<input type="checkbox" name="Over-ear" value="Over-ear" id="Over-ear" checked>
+									<label for="Over-ear">
+										<span class="ckbox">
+											<img class="unckbox-icon" src="../images/sub/uncheckbox.png">
+											<img class="ckbox-icon" src="../images/sub/checkbox.png">
+										</span>
+										<span class="ckbox-text">Over-ear</span>
+									</label>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<h4>FEAUTRES</h4>
+							<ul>
+								<li class="ckboxli">
+									<input type="checkbox" name="Wireless" value="Wireless" id="Wireless" checked>
+									<label for="Wireless">
+										<span class="ckbox">
+											<img class="unckbox-icon" src="../images/sub/uncheckbox.png">
+											<img class="ckbox-icon" src="../images/sub/checkbox.png">
+										</span>
+										<span class="ckbox-text">Wireless</span>
+									</label>
+								</li>
+								<li class="ckboxli">
+									<input type="checkbox" name="Sport" value="Sport" id="Sport" checked>
+									<label for="Sport" class="labelbtn">
+										<span class="ckbox">
+											<img class="unckbox-icon" src="../images/sub/uncheckbox.png">
+											<img class="ckbox-icon" src="../images/sub/checkbox.png">
+										</span>
+										<span class="ckbox-text">Sport</span>
+									</label>
+								</li>
+							</ul>
+						</li>
+						<div class="buttonbox">
+							<button class="viewallbtn" type="button">VIEW ALL</button>
+							<button class="clearbtn" type="button">CLEAR ALL</button>
+						</div>
+					</ul>
+					
+					<script>
+						$(function(){
+							$('input').change(function(){
+								if($(this).is(":checked")){
+									$(this).next().find('.unckbox-icon').hide();
+									$(this).next().find('.ckbox-icon').show();
+								}else{
+									$(this).next().find('.ckbox-icon').hide();
+									$(this).next().find('.unckbox-icon').show();
+								}
+							});
+							$('.viewallbtn').click(function(){
+								$('input:checkbox').prop('checked',true);
+								$('.unckbox-icon').hide();
+								$('.ckbox-icon').show();
+								$('.listbox').show();
+							});
+							$('.clearbtn').click(function(){
+								$('input:checkbox').prop('checked',false);
+								$('.ckbox-icon').hide();
+								$('.unckbox-icon').show();
+								$('.listbox').hide();
+							});
+							
+							$('#On-ear').change(function(){
+								if($("#On-ear").is(":checked")){
+									$('.onear').show();
+								}else{
+									$('.onear').hide();
+								}
+							});
+							$('#Over-ear').change(function(){
+								if($("#Over-ear").is(":checked")){
+									$('.overear').show();
+								}else{
+									$('.overear').hide();
+								}
+							});							
+							$('#Wireless').change(function(){
+								if($("#Wireless").is(":checked")){
+									$('.wirex').show();
+								}else{
+									$('.wirex').hide();
+								}
+							});
+							$('#Sport').change(function(){
+								if($("#Sport").is(":checked")){
+									$('.sport').show();
+								}else{
+									$('.sport').hide();
+								}
+							});
+						});
+					</script>
+				</div><!--item-left END-->
+			</form>
+			<div class="item-right">
+				<ul>
+					<li class="onear sport listbox m-left-list">
+						<a href="detail.html">
+							<img src="../images/sub/500BT.png" alt="">
+							<h3>W-500BT</h3>
+							<h4>노이즈 캔슬링 헤드폰</h4>
+							<p>&#8361; 450,000</p>
+						</a>
+					</li>
+					<li class="overear listbox">
+						<a href="detail.html">
+							<img src="../images/sub/h4.png" alt="">
+							<h3>bao-h4</h3>
+							<h4>배터리 수명이 긴 헤드폰</h4>
+							<p>&#8361; 720,000</p>
+						</a>
+					</li>
+					<li class="onear listbox m-left-list">
+						<a href="detail.html">
+							<img src="../images/sub/h8i.png" alt="">
+							<h3>bao-h8i</h3>
+							<h4>순수한 표현, 탁월한 사운드</h4>
+							<p>&#8361; 620,000</p>
+						</a>
+					</li>
+					<li class="overear listbox">
+						<a href="detail.html">
+							<img src="../images/sub/850.png" alt="">
+							<h3>BTNC-850</h3>
+							<h4>보다 컴팩트하고 강력한</h4>
+							<p>&#8361; 1,130,000</p>
+						</a>
+					</li>
+					<li class="overear sport listbox m-left-list">
+						<a href="detail.html">
+							<img src="../images/sub/500BTNC.png" alt="">
+							<h3>BTNC-500</h3>
+							<h4>온이어 무선헤드폰</h4>
+							<p>&#8361; 270,000</p>
+						</a>
+					</li>
+					<li class="overear listbox">
+						<a href="detail.html">
+							<img src="../images/sub/600BTNC.png" alt="">
+							<h3>BTNC-600</h3>
+							<h4>reddot 수상작</h4>
+							<p>&#8361; 320,000</p>
+						</a>
+					</li>
+					<li class="overear wirex airh8 listbox m-left-list">
+						<a href="detail.html">
+							<img src="../images/sub/air-h8.png" alt="">
+							<h3>AIR-h8</h3>
+							<h4>초경량 헤드폰</h4>
+							<p>&#8361; 380,000</p>
+						</a>
+					</li>
+					<li class="overear listbox">
+						<a href="detail.html">
+							<img src="../images/sub/WS900B.png" alt="">
+							<h3>WS900B</h3>
+							<h4>중저음의 솔리드베이스</h4>
+							<p>&#8361; 490,000</p>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</section><!--sub-item END-->
+		<section id="subscribe">
+			<form>
+				<fieldset class="input_holder">
+					<label for="subscribebox"><p><span class="sub_bat">BAT</span><span class="sub_mem">의 멤버가 되어 함께 해주세요</span></p>
+					<p class="sub_text">맞춤형 제품 뉴스, 업데이트 및 특별 초대를 받을 수 있습니다!</p></label>
+					<input type="text" id="subscribebox" placeholder="이메일 주소 입력" required>
+					<input type="submit" value="등록">
+				</fieldset>
+			</form>
+		</section><!--subscribe END-->
+		<footer>
+			<div id="footer_inner">
+				<div class="footlogo">
+					<img src="../images/main/batlogo.png" alt="BAT 로고">
+				</div>
+				<div class="footnav dropdown">
+					<h3 class="dropbtn">제품<img class="updownbutton" src="../images/main/downbutton.png"></h3>
+					<ul class="dropmenu">
+						<li><a href="#">스피커</a></li>
+						<li><a href="#">헤드폰</a></li>
+						<li><a href="#">이어폰</a></li>
+					</ul>
+				</div>
+				<div class="footnav dropdown">
+					<h3 class="dropbtn">고객지원<img class="updownbutton" src="../images/main/downbutton.png"></h3>
+					<ul class="dropmenu">
+						<li><a href="support.html">제품 도움말</a></li>
+						<li><a href="support.html">매장찾기</a></li>
+						<li><a href="support.html">문의하기</a></li>
+					</ul>
+				</div>
+				<div class="footnav dropdown">
+					<h3 class="dropbtn">회사<img class="updownbutton" src="../images/main/downbutton.png"></h3>
+					<ul class="dropmenu">
+						<li><a href="#">소개</a></li>
+						<li><a href="#">채용</a></li>
+						<li><a href="#">이용약관</a></li>
+						<li><a href="#">사이트맵</a></li>
+					</ul>
+				</div>
+				<div class="footnav">
+					<div class="follow">
+						<h3>팔로우하기</h3>
+						<ul>
+							<li class="snslogo">
+								<a href="#"><img class="non logo1" src="../images/footer/sns1.png"><img class="hover logo1" src="../images/footer/sns1ov.png"></a>
+							</li>
+							<li class="snslogo">
+								<a href="#"><img class="non logo2" src="../images/footer/sns2.png"><img class="hover logo2" src="../images/footer/sns2ov.png"></a>
+							</li>
+							<li class="snslogo">
+								<a href="#"><img class="non logo3" src="../images/footer/sns3.png"><img class="hover logo3" src="../images/footer/sns3ov.png"></a>
+							</li>
+							<li class="snslogo">
+								<a href="#"><img class="non logo4" src="../images/footer/sns4.png"><img class="hover logo4" src="../images/footer/sns4ov.png"></a>
+							</li>
+						</ul>
+					</div><!--follow END-->
+				</div>
+				<div class="footnav lastnav">
+					<div class="location">
+						<h3>위치</h3>
+						<p>대한민국 | <a href="#">변경</a></p>
+					</div><!--location END-->
+				</div><!--footnav lastnav END-->
+			</div><!--footer_inner END-->
+		</footer>
+	</body>
+</html>
